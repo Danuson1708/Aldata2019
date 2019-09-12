@@ -23,6 +23,7 @@ public class Oblig1 {
 
         return a[a.length-1];
 
+
     }
 
     public static int ombyttinger(int[] a) {
@@ -37,7 +38,7 @@ public class Oblig1 {
                 a[i] = tmp;
                 bytter++;
 
-                System.out.println("test");
+
 
             }
         }
