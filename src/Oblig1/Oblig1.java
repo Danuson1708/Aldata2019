@@ -2,17 +2,48 @@ package Oblig1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.NoSuchElementException;
+
 public class Oblig1 {
     private Oblig1(){
 
     }
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        throw new NotImplementedException();
+        if(a.length == 0){
+            throw new NoSuchElementException("Tabellen er tom");
+        }
+        for (int i =1; i < a.length ; i++) {
+            if(a[i-1] > a[i]){
+                int tmp = a[i-1];
+                a[i-1] = a[i];
+                a[i] = tmp;
+            }
+        }
+
+        return a[a.length-1];
+
     }
 
     public static int ombyttinger(int[] a) {
-        throw new NotImplementedException();
+        if(a.length == 0){
+        throw new NoSuchElementException("Tabellen er tom");
+        }
+        int bytter = 0;
+        for(int i = 1; i < a.length; i++){
+            if(a[i-1] > a[i]){
+                int tmp = a[i-1];
+                a[i-1] = a[i];
+                a[i] = tmp;
+                bytter++;
+
+                System.out.println("test");
+
+            }
+        }
+
+        return bytter;
+        //retunerer antall bytter som er gjort
     }
 
     ///// Oppgave 2 //////////////////////////////////////
