@@ -13,7 +13,7 @@ public class Oblig1 {
         if(a.length == 0){
             throw new NoSuchElementException("Tabellen er tom");
         }
-        for (int i =1; i < a.length ; i++) {
+        for (int i = 1; i < a.length ; i++) {
             if(a[i-1] > a[i]){
                 int tmp = a[i-1];
                 a[i-1] = a[i];
@@ -38,18 +38,34 @@ public class Oblig1 {
                 a[i] = tmp;
                 bytter++;
 
-
-
             }
         }
 
         return bytter;
-        //retunerer antall bytter som er gjort
+
     }
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new NotImplementedException();
+
+        for(int l = 1; l < a.length; l++){
+            if(a[l-1] > a[l]){
+                throw new IllegalStateException("den er ikke sortert");
+
+            }
+        }
+        int antallSort = 1;
+
+        for(int i = 1; i < a.length; i++){
+            if(a[i-1] < a[i]){
+                antallSort++;
+            }
+        }
+       if(a.length == 0){
+           return 0;
+       }
+       return antallSort;
+
     }
 
 
