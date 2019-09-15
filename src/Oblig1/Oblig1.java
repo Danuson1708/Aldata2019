@@ -42,7 +42,7 @@ public class Oblig1 {
         }
 
         return bytter;
-
+        /// oppgave 1 ferdig /////
     }
 
     ///// Oppgave 2 //////////////////////////////////////
