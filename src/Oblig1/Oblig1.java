@@ -99,6 +99,7 @@ public class Oblig1 {
 
         }
         return antallSort;
+        //oppgave 3 er ferdig
 
 
 
