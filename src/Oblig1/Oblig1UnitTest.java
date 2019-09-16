@@ -10,15 +10,15 @@ public class Oblig1UnitTest {
     @org.junit.jupiter.api.Test
 
     void maks() {
-        int expected = 8;
 
         int [] tom ={4,5,8,2,5};
-        assertEquals(expected, Oblig1.maks(tom), "Implementer maks og denne testen");
+        assertEquals(8, Oblig1.maks(tom), "Implementer maks og denne testen");
 
     }
 
     @org.junit.jupiter.api.Test
     void ombyttinger() {
+
         assertEquals(true, false, "Implementer ombyttinger og denne testen");
     }
 

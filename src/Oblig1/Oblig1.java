@@ -2,6 +2,7 @@ package Oblig1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -107,8 +108,29 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new NotImplementedException();
+        int teller = 0;
+
+        for (int i = 0; i <a.length ; i++) {
+            if(a[i]%2 != 0){
+                int midlertidig = a[teller];
+                a[teller] = a[i];
+                a[i] = midlertidig;
+                teller++;
+            }
+
+        }
+        if(teller == 0 || teller == a.length){
+            Arrays.sort(a);
+        }
+        else{
+            Arrays.sort(a,0,teller);
+            Arrays.sort(a,teller,a.length);
+        }
+
+        //oppgave 4 ferdig
+
     }
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
