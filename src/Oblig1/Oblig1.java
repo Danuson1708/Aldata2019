@@ -186,9 +186,6 @@ public class Oblig1 {
 
 
 
-
-
-
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
@@ -202,8 +199,24 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
-    }
+         int [] indeks = new int [a.length];
+         int [] hjelpeTabell = a.clone();
+         Arrays.sort(hjelpeTabell);
+
+        for (int i = 0; i < hjelpeTabell.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if(hjelpeTabell[i] == a[j]){
+                    indeks[i] = j;
+                    break;
+                }
+
+                }
+
+            }
+             return indeks;
+        }
+
+
 
 
     ///// Oppgave 9 //////////////////////////////////////
