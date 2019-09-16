@@ -16,8 +16,8 @@ public class Oblig1 {
         }
         for (int i = 1; i < a.length ; i++) {
             if(a[i-1] > a[i]){
-                int tmp = a[i-1];
-                a[i-1] = a[i];
+                int tmp = a[i-1]; //holder av midlertidig
+                a[i-1] = a[i]; //
                 a[i] = tmp;
             }
         }
@@ -112,9 +112,9 @@ public class Oblig1 {
 
         for (int i = 0; i <a.length ; i++) {
             if(a[i]%2 != 0){
-                int midlertidig = a[teller];
-                a[teller] = a[i];
-                a[i] = midlertidig;
+                int midlertidig = a[teller]; // holder av midlertidig variabel
+                a[teller] = a[i]; //  ny posisjon
+                a[i] = midlertidig; // ny variabel
                 teller++;
             }
 
@@ -134,8 +134,26 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new NotImplementedException();
+        if(!(a.length == 0)){
+            char [] b = new char [a.length];
+            b[0] = a[a.length-1];
+
+            for (int i = 1; i <a.length ; i++) {
+                b[i] = a[i-1];
+
+                }
+            for (int j = 0; j < a.length; j++) {
+                a[j] =b [j];
+
+            }
+        }
+
     }
+    // Ferdig med oppgave 5
+
+
+
+
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
