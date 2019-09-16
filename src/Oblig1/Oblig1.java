@@ -156,9 +156,38 @@ public class Oblig1 {
 
 
     ///// Oppgave 6 //////////////////////////////////////
+    public static int gcd(int a, int k){
+        return k == 0 ? a :gcd(k, a % k);}
+
     public static void rotasjon(char[] a, int k) {
-        throw new NotImplementedException();
-    }
+        int n = a.length;
+        if( n < 2) return;
+
+        if((k %= n) < 0) k += n;
+
+        int s = gcd(n, k);
+
+        for (int i = 0; i < s ; i++) {
+            char verdi = a[i];
+
+            for (int j = i - k, m = i; j != i; j -= k ) {
+                if(j < 0){
+                j += n;
+
+                }
+                a[m] = a[j]; m = j;
+            }
+
+            a[i + k] = verdi;
+
+        }
+        }
+   //Oppgave 6 ferdig
+
+
+
+
+
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
