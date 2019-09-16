@@ -71,7 +71,37 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new NotImplementedException();
+
+        if( a.length == 0){
+            return  0;
+        }
+        if (a.length == 1){
+            return 1;
+        }
+        int antallSort = 0;
+        int maksTall=a[0];
+
+        for (int i = 0; i <a.length ; i++) {
+            if(maksTall < a[i]){
+                maksTall = a[i];
+
+            }
+
+        }
+        for (int j = 0; j <= maksTall; j++) {
+            for (int l = 0; l < a.length; l++) {
+                if (a[l] == j ){
+                    antallSort++;
+                    break;
+                }
+
+            }
+
+        }
+        return antallSort;
+
+
+
     }
 
     ///// Oppgave 4 //////////////////////////////////////
