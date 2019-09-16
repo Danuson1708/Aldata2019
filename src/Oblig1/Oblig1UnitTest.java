@@ -1,6 +1,6 @@
 package Oblig1;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 /**
  * Denne klassen kan du bruke til hjelp under utvikling av din oblig.
  * Lag små og enkle test-eksempler for å teste at metoden din fungerer som ønsket.
@@ -8,8 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Oblig1UnitTest {
     @org.junit.jupiter.api.Test
+
     void maks() {
-        assertEquals(true, false, "Implementer maks og denne testen");
+        int expected = 8;
+
+        int [] tom ={4,5,8,2,5};
+        assertEquals(expected, Oblig1.maks(tom), "Implementer maks og denne testen");
+
     }
 
     @org.junit.jupiter.api.Test
