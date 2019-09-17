@@ -221,8 +221,60 @@ public class Oblig1 {
      ///// Oppgave 9 //////////////////////////////////////
    public static int[] tredjeMin(int[] a) {
 
-            throw new NoSuchElementException("");
+        int lengde = a.length;
+        if( lengde < 3){
+            throw new NoSuchElementException("a.lentgth("+ lengde + ") < 3!");
         }
+        int [] indeks = indekssortering(Arrays.copyOf(a,3)); // bruker indekssorteringsklassen
+
+       int m = indeks[0];
+       int nm = indeks[1];
+       int onm = indeks[2];
+
+       int maksverdi = a[m];
+       int nestMaksverdi = a[nm];
+       int tredjeMaksverdi = a[onm];
+
+       for (int i = 3; i < lengde ; i++) {
+           if(a[i] < tredjeMaksverdi)
+           {
+               if(a[i] < nestMaksverdi)
+               {
+                   if(a[i] < maksverdi)
+                   {
+                       onm = nm;
+                       tredjeMaksverdi = nestMaksverdi;
+
+                       nm = m;
+                       nestMaksverdi = maksverdi;
+
+                       m = i;
+                       maksverdi = a[m];
+
+                   }
+                   else{
+                       onm = nm;
+                       tredjeMaksverdi = nestMaksverdi;
+
+                       nm = i;
+                       nestMaksverdi = a[nm];
+
+                   }
+
+               }
+
+               else{
+                   onm = i;
+                   tredjeMaksverdi = a[onm];
+               }
+           }
+
+       }
+
+         return  new int[]{m, nm, onm};
+        }
+
+        //Oppgave 9 er ferdig
 
 
     ///// Oppgave 10 //////////////////////////////////////
