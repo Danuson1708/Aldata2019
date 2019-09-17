@@ -186,7 +186,23 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new NotImplementedException();
+      char [] lengde = new char[s.length() + t.length()];
+      char [] aS = s.toCharArray();
+      char [] aT = t.toCharArray();
+
+      int i = 0, j = 0, k = 0;
+
+        for (int l = 0; l < Math.max(s.length(), t.length()) ; l++) {
+            if(i < s.length()){
+                lengde[k++] = aS[i++];
+            }
+            if(j < t.length()){
+                lengde[k++] = aT[i++];
+            }
+
+        }
+
+       return String.valueOf(lengde);
     }
 
     /// 7b)
