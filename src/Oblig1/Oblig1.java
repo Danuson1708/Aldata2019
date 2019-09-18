@@ -187,47 +187,45 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-      char [] lengde = new char[s.length() + t.length()];
-      char [] aS = s.toCharArray();
-      char [] aT = t.toCharArray();
+        char[] txt = new char[s.length() + t.length()];
+        char[] aS = s.toCharArray();
+        char[] aT = t.toCharArray();
 
-      int i = 0, j = 0, k = 0;
+        int i = 0, l = 0, j = 0;
 
-        for (int l = 0; l < Math.max(s.length(), t.length()) ; l++) {
-            if(i < s.length()){
-                lengde[k++] = aS[i++];
+        for (int n = 0; n < Math.max(s.length(), t.length()); n++) {
+            if (n < s.length()) {
+                txt[j++] = aS[i++];
             }
-            if(j < t.length()){
-                lengde[k++] = aT[i++];
+            if (l < t.length()) {
+                txt[j++] = aT[l++];
             }
-
         }
 
-       return String.valueOf(lengde);
+        return String.valueOf(txt);
     }
 
-    /// 7b)
     public static String flett(String... s) {
-        int maks = s[0].length();
 
-        for (int i = 0; i <s.length ; i++) {
-            if(s[i].length() > maks){
-                maks = s[i].length();
-            }
+        int l = 0;
 
+        for (String ukjent : s) {
+            l += ukjent.length();
         }
 
-        String resultat = "";
-        for (int i = 0; i < maks; i++) {
-            for (int l = 0; l < s.length; l++) {
-                if(s[l].length() > i){
-                    resultat += s[l].charAt(i);
+        int[] ny = new int[s.length];
+        String ut = "";
 
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (ny[j] < s[j].length()) {
+                    ut += s[j].toCharArray()[ny[j]];
+                    ny[j]++;
                 }
             }
-
         }
-        return resultat;
+
+        return ut;
 
     }
     //oppgave 7b ferdig
