@@ -249,7 +249,7 @@ public class Oblig1 {
         return indeks;
     }
 
-        //oppgave 8 ferdig
+        ///oppgave 8 ferdig
 
 
 
