@@ -228,7 +228,9 @@ public class Oblig1 {
 
         }
         return resultat;
+
     }
+    //oppgave 7b ferdig
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
