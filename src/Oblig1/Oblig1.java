@@ -228,7 +228,7 @@ public class Oblig1 {
         return ut;
 
     }
-    ///oppgave 7b fikset
+    //oppgave 7b fikset
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
