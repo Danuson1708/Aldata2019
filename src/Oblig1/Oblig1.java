@@ -9,6 +9,7 @@ public class Oblig1 {
     private Oblig1() {
 
     }
+    // Danuson vasantharajan s331362
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
@@ -207,7 +208,26 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        throw new NotImplementedException();
+        int maks = s[0].length();
+
+        for (int i = 0; i <s.length ; i++) {
+            if(s[i].length() > maks){
+                maks = s[i].length();
+            }
+
+        }
+
+        String resultat = "";
+        for (int i = 0; i < maks; i++) {
+            for (int l = 0; l < s.length; l++) {
+                if(s[l].length() > i){
+                    resultat += s[l].charAt(i);
+
+                }
+            }
+
+        }
+        return resultat;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
