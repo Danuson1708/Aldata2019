@@ -1,4 +1,0 @@
-Danuson Vasantharajan s331362
-jeg jobbet med elev som tar opp faget (Ammar Gii s326182)
-Det var først nå jeg så på canvas at jeg ikke kunne bruke Arrays.sort
-og fikk ikke tid til å endre det.
