@@ -187,7 +187,7 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        char[] txt = new char[s.length() + t.length()];
+        char[] lengde = new char[s.length() + t.length()];
         char[] aS = s.toCharArray();
         char[] aT = t.toCharArray();
 
@@ -195,14 +195,14 @@ public class Oblig1 {
 
         for (int n = 0; n < Math.max(s.length(), t.length()); n++) {
             if (n < s.length()) {
-                txt[j++] = aS[i++];
+                lengde[j++] = aS[i++];
             }
             if (l < t.length()) {
-                txt[j++] = aT[l++];
+                lengde[j++] = aT[l++];
             }
         }
 
-        return String.valueOf(txt);
+        return String.valueOf(lengde);
     }
 
     public static String flett(String... s) {
