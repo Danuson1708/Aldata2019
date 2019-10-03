@@ -160,7 +160,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
          node = node.neste;
 
          while( node != null){
-             sb.append(",").append(node.verdi);
+             sb.append(",").append(" ").append(node.verdi);
              node = node.neste;
          }
 
@@ -180,7 +180,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             node = hale.forrige;
 
             while( node != null){
-                sb.append(",").append(node.verdi);
+                sb.append(",").append(" ").append(node.verdi);
                 node = node.forrige;
             }
         }
