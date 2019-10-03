@@ -46,6 +46,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer = 0;
 
     }
+    //hjelpemetode
+
+    private Node<T> finnNode (int indeks){
+        Node<T> node ;
+
+        if(indeks < antall/2){
+            node = hode;
+            for (int i = 0; i < indeks ; i++) {
+                node = node.neste;
+            }
+
+        }
+        else{
+            node = hale;
+            for (int i = antall-1; i > indeks; i--) {
+                node = node.forrige;
+            }
+        }
+        return node;
+
+    }
+
+
 
     public DobbeltLenketListe(T[] a) {
         Objects.requireNonNull(a,"Tabellen a er null!");
@@ -70,9 +93,30 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
 
     }
+    private  static  void fratilKontroll(int antall, int fra, int til){
+        if(fra < 0){
+            throw new IndexOutOfBoundsException("fra ("+fra+") er negativ!");
+        }
+        if(til> antall){
+            throw new IndexOutOfBoundsException("til("+til+" er større enn antall ("+antall+")");
+
+        }
+        if(fra > til){
+            throw new IndexOutOfBoundsException("fra("+fra+"er større enn til ("+til+")");
+        }
+
+    }
 
     public Liste<T> subliste(int fra, int til){
-        throw new NotImplementedException();
+        fratilKontroll(antall,fra,til);
+
+        DobbeltLenketListe<T> nyListe = new DobbeltLenketListe<>();
+
+        for (int i = fra; i < til ; i++) {
+            nyListe.leggInn(hent(i));
+
+        }
+        return nyListe;
     }
 
     @Override
@@ -121,7 +165,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-        throw new NotImplementedException();
+       indeksKontroll(indeks,false);
+        return finnNode(indeks).verdi;
+
     }
 
     @Override
@@ -131,7 +177,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new NotImplementedException();
+        Objects.requireNonNull(nyverdi,"Ikke tillatt med null-verdi");
+        indeksKontroll(indeks,false);
+
+        Node<T> p = finnNode(indeks);
+        T gammelVerdi = p.verdi;
+
+        p.verdi = nyverdi;
+
+        endringer++;
+
+        return gammelVerdi;
+
     }
 
     @Override
