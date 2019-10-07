@@ -108,7 +108,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
-        fratilKontroll(antall,fra,til);
+        if(fra > til){
+            throw new IllegalArgumentException("Fra kan ikke være større enn til");
+        }
 
         DobbeltLenketListe<T> nyListe = new DobbeltLenketListe<>();
 
@@ -160,7 +162,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new NotImplementedException();
+       if(indeksTil(verdi) == -1){
+           return false;
+       }
+       return true;
     }
 
     @Override
@@ -172,7 +177,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new NotImplementedException();
+        if(verdi == null){
+            return -1;
+        }
+        Node<T> p = hode;
+        for (int indeks = 0; indeks < antall ; indeks++) {
+            if(p.verdi.equals(verdi)){
+                return indeks;
+            }
+            p = p.neste;
+
+
+        }
+        return -1;
+
     }
 
     @Override
