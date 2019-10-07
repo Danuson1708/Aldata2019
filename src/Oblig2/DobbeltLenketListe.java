@@ -254,17 +254,108 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new NotImplementedException();
-    }
+        if(verdi == null){
+            return  false;
+        }
+        Node<T> p = hode;
+        while (p != null) {
+            if (p.verdi.equals(verdi)) {
+                break;
+            }
+            p = p.neste;
+        }
+        if(p == null){
+            return false;
+        }
+        if(p == hode) {
+            hode = hode.neste;
+
+            if (hode != null) {
+                hode.forrige = null;
+            } else {
+                hale = null;
+            }
+        }
+            else if(p == hale){
+                hale = hale.forrige;
+                hale.neste = null;
+            }
+            else {
+                p.forrige.neste = p.neste;
+                p.neste.forrige = p.forrige;
+            }
+            p.verdi = null;
+            p.forrige = p.neste;
+            p.neste = null;
+
+            antall--;
+            endringer ++;
+            return true;
+        }
+
+
 
     @Override
     public T fjern(int indeks) {
-        throw new NotImplementedException();
+        indeksKontroll(indeks,false);
+        if(tom()){
+            return null;
+        }
+
+        Node<T> node;
+        T temp;
+
+        if(antall == 1){
+            temp = hode.verdi;
+            hode = hale = null;
+            antall--;
+            return temp;
+        }
+        else if(indeks == 0){
+            node = hode;
+            hode = hode.neste;
+            hode.forrige = null;
+        }
+        else if(indeks == antall-1){
+            node = hale;
+            hale = hale.forrige;
+            hale.neste = null;
+        }
+        else {
+            Node<T> c = finnNode(indeks-1);
+            node = c.neste;
+            c.neste = c.neste.neste;
+            c.neste.forrige = c;
+        }
+        antall--;
+        endringer++;
+        return node.verdi;
     }
 
     @Override
     public void nullstill() {
-        throw new NotImplementedException();
+        for(Node<T> mid = hode; mid != null; mid = mid.neste){
+            mid.verdi = null;
+            mid.forrige = mid.neste;
+            mid.neste = null;
+        }
+        hode = hale = null;
+        antall = 0;
+        endringer++; //34ms
+
+      /* if(!tom()){
+           hode.neste = null;
+           hode.forrige = null;
+           hode = hale = null;
+           antall = 0;
+           endringer++;
+       } // 40ms
+
+       */
+
+
+
+
     }
 
     @Override
