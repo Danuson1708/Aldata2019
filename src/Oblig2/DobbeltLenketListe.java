@@ -157,7 +157,50 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new NotImplementedException();
+        Objects.requireNonNull(verdi,"Ikke tillatt med null-verdi");
+       if(indeks < 0){
+           throw new IndexOutOfBoundsException("Indeks kan ikke være mindre enn null");
+       }
+       if(indeks > antall){
+           throw new IndexOutOfBoundsException("Indeks kan ikke være større enn antall");
+       }
+       if(verdi == null){
+           throw  new IndexOutOfBoundsException("Vedi kan ikke være lik null");
+       }
+       indeksKontroll(indeks,true);
+
+       Node<T> node;
+
+       if(antall == 0){
+           node = new Node<>(verdi,null,null);
+           hode = hale = node;
+           endringer++;
+           antall++;
+       }
+       else if(tom() || indeks >= antall){
+           leggInn(verdi);
+       }
+       else if(0==indeks){
+           node = new Node<T>(verdi,null,hode);
+           hode.forrige=node;
+           hode=node;
+           endringer++;
+           antall++;
+       }
+       else{
+           Node<T> gammelNode = finnNode(indeks);
+           node = new Node<T>(verdi,gammelNode.forrige,gammelNode);
+
+          gammelNode.forrige = node;
+           node.forrige.neste = node;
+           endringer++;
+           antall++;
+
+
+       }
+
+
+
     }
 
     @Override
