@@ -403,7 +403,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Iterator<T> iterator(int indeks) {
-        indeksKontroll(indeks,false);
+       indeksKontroll(indeks,false);
         DobbeltLenketListeIterator ny = new DobbeltLenketListeIterator(indeks);
         return ny;
     }
@@ -426,6 +426,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             denne = hode;
             fjernOK = false;
             iteratorendringer =endringer;
+            for (int i = 0; i <  indeks; i++) {
+                next();
+
+            }
 
         }
 
@@ -453,7 +457,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
-            throw new NotImplementedException();
+            if(!fjernOK){
+                throw  new IllegalStateException("Ikke gyldig");
+            }
+             if(iteratorendringer != endringer){
+                throw new ConcurrentModificationException("ikke gyldig liste");
+            }
+            fjernOK = false;
+            if(antall == 1){
+                hode = hale = null;
+            }
+            else if(denne == null){
+                hale = hale.forrige;
+                hale.neste = null;
+            }
+            else if(denne.forrige == hode){
+                hode = hode.neste;
+                hode.forrige = null;
+            }
+            else{
+                denne.forrige = denne.forrige.forrige;
+                denne.forrige.neste = denne;
+            }
+            antall--;
+            endringer++;
+            iteratorendringer++;
+
         }
 
     } // class DobbeltLenketListeIterator
